@@ -7,6 +7,7 @@
 // Components
 import Header from './components/Header';
 import Hero from './components/Hero';
+import About from './components/About';
 
 const APP = () => {
   return (
@@ -14,6 +15,7 @@ const APP = () => {
       <Header />
       <main>
         <Hero />
+        <About />
       </main>
     </>
   )
