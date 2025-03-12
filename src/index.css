@@ -1,0 +1,22 @@
+/**
+ * @copyright 2025 pomelo925
+ * @license Apache-2.0
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* base */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-zinc-900 text-zinc-50 h-[200vh];
+}
+
+/* components */
+
+/* menu button */
