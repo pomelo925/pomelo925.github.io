@@ -24,7 +24,7 @@ const Hero = () => {
           <div className="flex items-center gap-3">
             <figure className="img-box w-9 h-9 rounded-lg"> 
               <img
-                src="/images/portrait.png"
+                src="/portrait.png"
                 width={40}
                 height={40}
                 alt="pomelo925 portrait"
@@ -67,7 +67,7 @@ const Hero = () => {
           <figure className="w-full max-w-[480px] ml-auto bg-gradient-to-t from-rose-400
             via-25% via-rose-400/40 to-65% rounded-[60px] overflow-hidden">
             <img
-              src="/images/banner.png"
+              src="/banner.png"
               width={656}
               height={800}
               alt="pomelo925"
