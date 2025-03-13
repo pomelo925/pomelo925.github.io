@@ -6,31 +6,32 @@
 
 const aboutItems = [
   {
-    label: 'Project Done', 
-    number: 45
+    label: 'Github Followers', 
+    number: 28
   },
   {
     label: 'Years of experience',
+    number: 5
+  },
+  {
+    label: 'Robot Competitions', 
     number: 4
   }
 ];
 
 const About = () => {
   return (
-    <section
-      id="about"
-      className="section"
-    >
+    <section id="about" className="section">
       <div className="container">
-        <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12">
+        <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 reveal-up">
 
-        <p className="text-zinc-300 mb-4 mb:mb-8 md:text-xl md:max-w-[60ch]">
-          I am a passionate developer who loves to code and solve problems. 
-          I have completed 45 projects in 4 years. 
-          I have experience in developing web applications, mobile applications, and desktop applications.
+        <p className="text-zinc-300 mb-4 md:text-xl md:max-w-[70ch]">
+        Hi, I'm Hsing-Yu, Huang. I'm a NTHU student majoring in Power Machinery Engineering.
+        Passionate to software/hardware developement specializing in AI-driven robotics.
+        Experienced in international and local robotics competitions with multiple awards.
         </p>
 
-          <div className="flex flex-wrap items-center gap-4 md:gap-7">
+          <div className="flex flex-wrap items-center gap-4 mt-20 md:gap-7">
             {
               aboutItems.map(({label,  number}, key) => (
                 <div key={key}>
@@ -44,14 +45,13 @@ const About = () => {
               ))
             }
 
-            <img
-              src="/logo.png"
+            {/* <img
+              src="/portrait.jpg"
               alt="logo"
               width={30}
               height={30}
               className="ml-auto md:w-[40px] md:h-[40px]"
-            >
-            </img>
+            /> */}
           </div>
         </div>
       </div>

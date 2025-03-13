@@ -29,8 +29,8 @@ const Header = () => {
         justify-between items-center md:px-6 md:grid md:grid-cols-[1fr,2fr,1fr]">
         <h1>
           <a href="/" className="logo">
-            <img src="/logo.png" 
-              width={40} height={40} alt="pomelo925"> 
+            <img src="/logo.jpg" 
+              width={30} height={30} alt="pomelo925"> 
             </img>
           </a>
         </h1>

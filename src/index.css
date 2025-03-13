@@ -20,9 +20,10 @@ body {
 
 /** typography **/
 
-.headline-1 {
+.headline-1,
+.headline-2 {
   @apply max-w-max;
-  background: -webkit-linear-gradient(90deg, #f12558 0%, #ffffff 100%);
+  background: -webkit-linear-gradient(90deg, #f12558 0%, #ffffffde 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -33,7 +34,17 @@ body {
     lg:leading-[1.15];
 }
 
+.headline-2 {
+  @apply text-3xl lg:text-4xl lg:leading-tight font-semibold
+}
 
+.title-1 {
+  @apply text-[22px] font-normal
+}
+
+.title-2 {
+  @apply text-[18px] font-normal
+}
 
 /** utilities **/
 
@@ -58,6 +69,9 @@ body {
   @apply pt-20 lg:pt-32;
 }
 
+.reveal-up {
+  @apply translate-y-20 opacity-0;
+}
 
 /** components **/
 
@@ -83,7 +97,7 @@ body {
 
 .nav-link {
   @apply grid items-center h-9 px-4 text-sm font-medium
-    tracking-wide text-zinc-50/50 hover:text-zinc-50
+    tracking-wide text-zinc-50/50 hover:text-rose-200
 }
 
 .nav-link.active {
@@ -91,7 +105,7 @@ body {
 }
 
 .navbar .active-box{
-  @apply absolute top-2 left-2 right-2 h-9 bg-zinc-50
+  @apply absolute top-2 left-2 right-2 h-9 bg-rose-200
     rounded-lg -z-10 duration-500
 }
 
@@ -104,7 +118,7 @@ body {
 }
 
 .btn-secondary {
-  @apply bg-zinc-50 text-zinc-900 active:bg-zinc-50/80
+  @apply bg-rose-200 text-zinc-900 active:bg-zinc-50/80
 }
 
 .btn .material-symbols-rounded {
@@ -121,4 +135,22 @@ body {
 
 .btn-outline {
   @apply h-11 bg-zinc-800 hover:bg-zinc-700 active:bg-zinc-800
+}
+
+
+/* text field */
+
+.label {
+  @apply block text-zinc-200 text-sm font-normal mb-2
+}
+
+.text-field {
+  @apply block outline-none w-full px-3 py-3 text-sm bg-zinc-800
+    rounded-xl ring-1 ring-inset ring-transparent transition-shadow
+    hover:ring-zinc-50/5 focus:ring-sky-400
+    focus:ring-2 
+}
+
+.text-field::placeholder {
+  @apply text-zinc-400 
 }
