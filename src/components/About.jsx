@@ -7,7 +7,7 @@
 const aboutItems = [
   {
     label: 'Github Followers', 
-    number: 28
+    number: 30
   },
   {
     label: 'Years of experience',
