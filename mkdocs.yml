@@ -67,17 +67,17 @@ theme:
 
 nav:
   - Home: index.md
-  - About: /about/index.md
-  - Experiences: /experiences/index.md
+  - About: about/index.md
+  - Experiences: experiences/index.md
   - Projects: 
-    - /projects/index.md
-    - TEL2024: /projects/competition/tel2024.md
-    - Eurobot2024: /projects/competition/eurobot2024.md
-    - Eurobot2023: /projects/competition/eurobot2023.md
-    - TEL2022: /projects/competition/tel2022.md
+    - projects/index.md
+    - TEL2024: projects/competition/tel2024.md
+    - Eurobot2024: projects/competition/eurobot2024.md
+    - Eurobot2023: projects/competition/eurobot2023.md
+    - TEL2022: projects/competition/tel2022.md
   - Tutorials: 
-    - /tutorials/index.md
-    - Git: /tutorials/git.md
+    - tutorials/index.md
+    - Git: tutorials/git.md
 
 markdown_extensions:
   - attr_list
