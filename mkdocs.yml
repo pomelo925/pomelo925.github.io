@@ -76,6 +76,7 @@ nav:
   - Tutorials: 
     - tutorials/index.md
     - I. Software: 
+      - tutorials/I.Software/index.md
       - 1. Linux:
         - tutorials/I.Software/1.Linux/1-1.installation.md
         - tutorials/I.Software/1.Linux/1-2.commands.md
@@ -94,8 +95,8 @@ nav:
         - tutorials/I.Software/5.Docker/5-1.intro.md
       - 6. DevOps:
         - tutorials/I.Software/6.DevOps/6-1.intro.md
-      - tutorials/I.Software/index.md
     - II. Robot:
+      - tutorials/II.Robot/index.md
       - 1. ROS2:
         - tutorials/II.Robot/1.ROS2/1-1.intro.md
         - tutorials/II.Robot/1.ROS2/1-2.installation.md
@@ -103,6 +104,7 @@ nav:
       - 2. IssacSim:
         - tutorials/II.Robot/2.IssacSim/2-1.intro.md
     - III. Hardware:
+      - tutorials/III.Hardware/index.md
       - 1. STM32:
         - tutorials/III.Hardware/1.STM32/1-1.intro.md
         - tutorials/III.Hardware/1.STM32/1-2.projectFramework.md

@@ -85,9 +85,9 @@ class StatusOverviewGenerator:
             print(f"Warning: Could not read {full_path}: {e}")
             return "pending"
     
-    def parse_tutorial_nav_structure(self, nav_items: List) -> List[Tuple[str, str, str, str]]:
-        """Parse tutorial navigation structure and extract information"""
-        tutorials = []
+    def parse_tutorial_nav_structure(self, nav_items: List) -> Dict[str, List[Tuple[str, str, str]]]:
+        """Parse tutorial navigation structure and extract information by category"""
+        categories = {}
         
         for category_item in nav_items:
             if not isinstance(category_item, dict):
@@ -96,8 +96,14 @@ class StatusOverviewGenerator:
             for category_name, sections in category_item.items():
                 if not isinstance(sections, list):
                     continue
-                    
+                
+                category_tutorials = []
+                
                 for section_item in sections:
+                    # Skip index.md files
+                    if isinstance(section_item, str) and section_item.endswith('index.md'):
+                        continue
+                        
                     if not isinstance(section_item, dict):
                         continue
                         
@@ -111,14 +117,16 @@ class StatusOverviewGenerator:
                                 tutorial_name = self.extract_name_from_path(tutorial_file)
                                 status = self.get_file_status(tutorial_file)
                                 
-                                tutorials.append((
-                                    category_name,
+                                category_tutorials.append((
                                     section_name,
                                     tutorial_name,
                                     self.status_icons.get(status, '<span class="status-pending">Pending</span>')
                                 ))
+                
+                if category_tutorials:
+                    categories[category_name] = category_tutorials
         
-        return tutorials
+        return categories
     
     def parse_project_nav_structure(self, nav_items: List) -> List[Tuple[str, str]]:
         """Parse project navigation structure and extract information"""
@@ -208,26 +216,21 @@ class StatusOverviewGenerator:
             print(f"Warning: Could not read title from {file_path}: {e}")
             return None
     
-    def generate_tutorial_table_markdown(self, tutorials: List[Tuple[str, str, str, str]]) -> str:
-        """Generate markdown table for tutorials"""
+    def generate_category_table_markdown(self, tutorials: List[Tuple[str, str, str]]) -> str:
+        """Generate markdown table for a specific category"""
         if not tutorials:
-            return "No tutorials found."
+            return "No tutorials found in this category."
         
         # Table header
-        table = "| Category | Section | Subsection | Status |\n"
-        table += "|----------|---------|----------|--------|\n"
+        table = "| Section | Subsection | Status |\n"
+        table += "|---------|----------|--------|\n"
         
-        # Group tutorials by category for better formatting
-        current_category = ""
+        # Group tutorials by section for better formatting
         current_section = ""
         
-        for category, section, tutorial, status in tutorials:
-            category_cell = category if category != current_category else ""
-            section_cell = section if section != current_section or category != current_category else ""
-            
-            table += f"| {category_cell} | {section_cell} | {tutorial} | {status} |\n"
-            
-            current_category = category
+        for section, tutorial, status in tutorials:
+            section_cell = section if section != current_section else ""
+            table += f"| {section_cell} | {tutorial} | {status} |\n"
             current_section = section
         
         return table
@@ -246,40 +249,50 @@ class StatusOverviewGenerator:
         
         return table
     
-    def generate_tutorial_content(self) -> str:
-        """Generate complete tutorial status content"""
-        try:
-            # Load mkdocs config
-            config = self.load_mkdocs_config()
-            
-            # Extract tutorial navigation
-            tutorial_nav = self.extract_nav_section(config.get('nav', []), 'Tutorials')
-            
-            if not tutorial_nav:
-                return "No tutorial navigation found in mkdocs.yml"
-            
-            # Parse navigation structure
-            tutorials = self.parse_tutorial_nav_structure(tutorial_nav)
-            
-            # Generate table
-            table = self.generate_tutorial_table_markdown(tutorials)
-            
-            # Generate complete content
-            content = """# Tutorials
+    def generate_software_content(self, tutorials: List[Tuple[str, str, str]]) -> str:
+        """Generate software category status content"""
+        table = self.generate_category_table_markdown(tutorials)
+        
+        content = """# I. Software
 
-Most of the tutorials would work on Linux OS, which is the optimal OS for developing.
-
-## Tutorial Status Overview
+## Status Overview
 
 > This table is auto-generated.
 
 {table}
 """.format(table=table)
-            
-            return content
-            
-        except Exception as e:
-            return f"Error generating tutorial status: {e}"
+        
+        return content
+    
+    def generate_robot_content(self, tutorials: List[Tuple[str, str, str]]) -> str:
+        """Generate robot category status content"""
+        table = self.generate_category_table_markdown(tutorials)
+        
+        content = """# II. Robot
+
+## Status Overview
+
+> This table is auto-generated.
+
+{table}
+""".format(table=table)
+        
+        return content
+    
+    def generate_hardware_content(self, tutorials: List[Tuple[str, str, str]]) -> str:
+        """Generate hardware category status content"""
+        table = self.generate_category_table_markdown(tutorials)
+        
+        content = """# III. Hardware
+
+## Status Overview
+
+> This table is auto-generated.
+
+{table}
+""".format(table=table)
+        
+        return content
     
     def generate_project_content(self) -> str:
         """Generate complete project status content"""
@@ -316,20 +329,55 @@ Here are my various projects, including competitions, personal projects, and mor
         except Exception as e:
             return f"Error generating project status: {e}"
     
-    def update_tutorial_index(self):
-        """Update the tutorial index.md file with generated content"""
-        tutorial_index_path = self.docs_dir / "tutorials" / "index.md"
-        
+    def update_tutorial_indexes(self):
+        """Update all tutorial category index.md files with generated content"""
         try:
-            new_content = self.generate_tutorial_content()
+            # Load mkdocs config
+            config = self.load_mkdocs_config()
             
-            with open(tutorial_index_path, 'w', encoding='utf-8') as f:
-                f.write(new_content)
-                
-            print(f"✅ Successfully updated {tutorial_index_path}")
+            # Extract tutorial navigation
+            tutorial_nav = self.extract_nav_section(config.get('nav', []), 'Tutorials')
+            
+            if not tutorial_nav:
+                print("❌ No tutorial navigation found in mkdocs.yml")
+                return
+            
+            # Parse navigation structure by category
+            categories = self.parse_tutorial_nav_structure(tutorial_nav)
+            
+            # Update each category's index.md
+            for category_name, tutorials in categories.items():
+                try:
+                    # Determine the content generator and file path based on category
+                    if category_name == "I. Software":
+                        content = self.generate_software_content(tutorials)
+                        file_path = self.docs_dir / "tutorials" / "I.Software" / "index.md"
+                    elif category_name == "II. Robot":
+                        content = self.generate_robot_content(tutorials)
+                        file_path = self.docs_dir / "tutorials" / "II.Robot" / "index.md"
+                    elif category_name == "III. Hardware":
+                        content = self.generate_hardware_content(tutorials)
+                        file_path = self.docs_dir / "tutorials" / "III.Hardware" / "index.md"
+                    else:
+                        print(f"⚠️ Unknown category: {category_name}, skipping...")
+                        continue
+                    
+                    # Write the content to file
+                    with open(file_path, 'w', encoding='utf-8') as f:
+                        f.write(content)
+                        
+                    print(f"✅ Successfully updated {file_path}")
+                    
+                except Exception as e:
+                    print(f"❌ Error updating {category_name} index: {e}")
             
         except Exception as e:
-            print(f"❌ Error updating tutorial index: {e}")
+            print(f"❌ Error updating tutorial indexes: {e}")
+    
+    def update_tutorial_index(self):
+        """This method is deprecated, use update_tutorial_indexes instead"""
+        print("⚠️ update_tutorial_index is deprecated, use update_tutorial_indexes instead")
+        self.update_tutorial_indexes()
     
     def update_project_index(self):
         """Update the project index.md file with generated content"""
@@ -347,9 +395,9 @@ Here are my various projects, including competitions, personal projects, and mor
             print(f"❌ Error updating project index: {e}")
     
     def update_all(self):
-        """Update both tutorial and project index files"""
+        """Update both tutorial category indexes and project index files"""
         print("🔄 Updating all status overview tables...")
-        self.update_tutorial_index()
+        self.update_tutorial_indexes()
         self.update_project_index()
 
 
