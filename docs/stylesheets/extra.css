@@ -5,3 +5,112 @@
   border-radius: 4px;
   padding: 0.1em 0.4em;
 }
+
+/* status tag */
+h1[data-status]::after,
+h2[data-status]::after,
+h3[data-status]::after,
+h4[data-status]::after,
+h5[data-status]::after,
+h6[data-status]::after {
+  content: attr(data-status);
+  font-size: 0.47em;
+  font-weight: 600;
+  color: white;
+  padding: 0.067em 0.33em;
+  margin-left: 0em;
+  margin-bottom: 0.1em;
+  border-radius: 4px;
+  display: inline-block;
+  user-select: none;
+  text-transform: capitalize;
+}
+
+/* status colors */
+h1[data-status="done"]::after,
+h2[data-status="done"]::after,
+h3[data-status="done"]::after,
+h4[data-status="done"]::after,
+h5[data-status="done"]::after,
+h6[data-status="done"]::after {
+  background-color: rgba(67, 160, 71, 0.65);
+}
+
+h1[data-status="revising"]::after,
+h2[data-status="revising"]::after,
+h3[data-status="revising"]::after,
+h4[data-status="revising"]::after,
+h5[data-status="revising"]::after,
+h6[data-status="revising"]::after {
+  background-color: rgba(251, 140, 0, 0.65);
+}
+
+h1[data-status="pending"]::after,
+h2[data-status="pending"]::after,
+h3[data-status="pending"]::after,
+h4[data-status="pending"]::after,
+h5[data-status="pending"]::after,
+h6[data-status="pending"]::after {
+  background-color: rgba(229, 57, 53, 0.65);
+}
+
+/* different blue colors for different heading levels */
+.md-typeset h1 {
+  color: #90caf9 !important;  /* light blue for h1 */
+}
+
+.md-typeset h2 {
+  color: #42a5f5 !important;  /* medium blue for h2 */
+}
+
+.md-typeset h3 {
+  color: #1e88e5 !important;  /* darker blue for h3 */
+}
+
+/* override status tag colors back to white for better contrast */
+h1[data-status]::after,
+h2[data-status]::after,
+h3[data-status]::after {
+  color: white !important;
+}
+
+/* Tutorial status table styles - matching data-status colors */
+.status-pending {
+  background-color: rgba(229, 57, 53, 0.65);
+  color: white;
+  font-weight: 600;
+  padding: 0.2em 0.6em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  text-transform: capitalize;
+}
+
+.status-in-progress {
+  background-color: rgba(251, 140, 0, 0.65);
+  color: white;
+  font-weight: 600;
+  padding: 0.2em 0.6em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  text-transform: capitalize;
+}
+
+.status-complete {
+  background-color: rgba(67, 160, 71, 0.65);
+  color: white;
+  font-weight: 600;
+  padding: 0.2em 0.6em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  text-transform: capitalize;
+}
+
+.status-blocked {
+  background-color: rgba(108, 117, 125, 0.65);
+  color: white;
+  font-weight: 600;
+  padding: 0.2em 0.6em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  text-transform: capitalize;
+}

@@ -14,28 +14,24 @@ theme:
     repo: octicons/git-merge-16
 
   features:
-    # - announce.dismiss              # Dismissable announcement bar (use with extra.announcement)
     - content.action.edit           # Show "Edit this page" button
     - content.action.view           # Show "View source" button
     - content.code.annotate         # Support code line annotation (requires specific syntax)
     - content.code.copy             # Show "Copy" button on code blocks
-    # - content.code.select           # Click to select entire code block (not copy)
     - content.footnote.tooltips     # Show tooltip when hovering over footnotes
     - content.tabs.link             # Support linking to specific tab (tab content)
     - content.tooltips              # Show text tooltips (using <abbr> syntax)
 
-    # - header.autohide               # Auto-hide top navigation bar when scrolling
     - header.tabs.sticky            # Keep top navigation bar fixed at top of page
     - header.tabs.sticky.scrollable # Navigation bar is scrollable, suitable for long nav bars
 
-    - navigation.expand             # Expand all sidebar levels by default
     - navigation.footer             # Show "Previous/Next page" footer navigation
     - navigation.indexes            # Support index.md in folders as section homepage
     - navigation.instant            # Enable instant page switching (no full reload)
     - navigation.instant.prefetch   # Prefetch linked pages for faster loading
     - navigation.instant.progress   # Show progress bar during instant switching
     - navigation.prune              # Hide pages not listed in nav (still statically generated)
-    - navigation.sections           # Display nav blocks in sections (improves reading hierarchy)
+    # - navigation.sections           # Display nav blocks in sections (improves reading hierarchy)
     - navigation.tabs               # Set top navigation bar as tab style
     - navigation.tabs.sticky        # Keep navigation tabs fixed at top of page
     - navigation.top                # Show "Back to top" button
@@ -44,16 +40,18 @@ theme:
 
     - search.highlight              # Automatically highlight search results
     - search.share                  # Add "Share search results" button to search bar
-    # - search.suggest                # Suggest completions when typing in search
+    - search.suggest                # Suggest completions when typing in search
 
     - toc.follow                    # Highlight TOC as you scroll
-    # - toc.integrate                 # Integrate TOC into sidebar (not floating TOC on right)
+
+  toc:
+    integrate: false                # Keep third+ level headings in right-side floating TOC
 
   palette: 
     # Palette toggle for dark mode
     - scheme: slate
       primary: teal
-      accent: amber
+      accent: lime
       toggle:
         icon: material/brightness-2
         name: Switch to light mode
@@ -77,7 +75,39 @@ nav:
     - TEL2022: projects/competition/tel2022.md
   - Tutorials: 
     - tutorials/index.md
-    - Git: tutorials/git.md
+    - I. Software: 
+      - 1. Linux:
+        - tutorials/I.Software/1.Linux/1-1.installation.md
+        - tutorials/I.Software/1.Linux/1-2.commands.md
+        - tutorials/I.Software/1.Linux/1-3.tools.md
+      - 2. Net:
+        - tutorials/I.Software/2.Net/2-1.dhcp.md
+        - tutorials/I.Software/2.Net/2-2.mDNS.md
+        - tutorials/I.Software/2.Net/2-3.mobaxterm.md
+      - 3. SSH:
+        - tutorials/I.Software/3.SSH/3-1.mechanism.md
+        - tutorials/I.Software/3.SSH/3-2.ssh-over-wifi.md
+        - tutorials/I.Software/3.SSH/3-3.ssh-over-eth.md
+      - 4. Git/Github:
+        - tutorials/I.Software/4.Git/4-1.intro.md
+      - 5. Docker:
+        - tutorials/I.Software/5.Docker/5-1.intro.md
+      - 6. DevOps:
+        - tutorials/I.Software/6.DevOps/6-1.intro.md
+      - tutorials/I.Software/index.md
+    - II. Robot:
+      - 1. ROS2:
+        - tutorials/II.Robot/1.ROS2/1-1.intro.md
+        - tutorials/II.Robot/1.ROS2/1-2.installation.md
+        - tutorials/II.Robot/1.ROS2/1-3.node.md
+      - 2. IssacSim:
+        - tutorials/II.Robot/2.IssacSim/2-1.intro.md
+    - III. Hardware:
+      - 1. STM32:
+        - tutorials/III.Hardware/1.STM32/1-1.intro.md
+        - tutorials/III.Hardware/1.STM32/1-2.projectFramework.md
+      - 2. PCB:
+        - tutorials/III.Hardware/2.PCB/2-1.intro.md
 
 markdown_extensions:
   - attr_list
