@@ -3,7 +3,7 @@ services:
     build:
       context: .  
       dockerfile: Dockerfile
-    image: hrcnthu/mkdocs:default
+    image: pomelo925/mkdocs:default
     ports:
       - "8000:8000"
     volumes:
