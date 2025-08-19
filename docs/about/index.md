@@ -26,7 +26,7 @@ For a comprehensive overview of my work, please visit the [Projects](https://pom
     <div class="timeline-date">May 2024<br>–<br>Jul 2023</div>
     <div class="experience-header">
       <div class="experience-title">Image Processing Team Leader</div>
-    <div class="experience-company">Eurobot 2024, Nantes, France</div>
+      <div class="experience-company">Eurobot 2024, Nantes, France</div>
       <div class="experience-tech">ROS/ArUco Marker/YOLO/3D point cloud/Docker</div>
     </div>
     <ul class="experience-description">
