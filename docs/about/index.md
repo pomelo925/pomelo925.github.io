@@ -161,12 +161,6 @@ For a comprehensive overview of my work, please visit the [Projects](https://pom
   </div>
   
   <div class="skill-item">
-    <img src="https://skillicons.dev/icons?i=qt" alt="Qt" class="skill-icon">
-    <div class="skill-label">Qt</div>
-    <div class="skill-desc">GUI</div>
-  </div>
-  
-  <div class="skill-item">
     <img src="https://skillicons.dev/icons?i=opencv" alt="OpenCV" class="skill-icon">
     <div class="skill-label">OpenCV</div>
     <div class="skill-desc">Image Processing</div>

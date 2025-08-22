@@ -6,9 +6,7 @@
 
 | Section | Subsection | Status |
 |---------|----------|--------|
-| 1. Linux | 1-1. installation | <span class="status-pending">Pending</span> |
-|  | 1-2. commands | <span class="status-pending">Pending</span> |
-|  | 1-3. tools | <span class="status-pending">Pending</span> |
+| 1. Linux | 1-1. OS | <span class="status-complete">Done</span> |
 | 2. Net | 2-1. DHCP | <span class="status-pending">Pending</span> |
 |  | 2-2. mDNS | <span class="status-pending">Pending</span> |
 |  | 2-3. MobaXTerm | <span class="status-pending">Pending</span> |

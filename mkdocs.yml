@@ -2,8 +2,9 @@ site_name: pomelo925
 site_url: https://pomelo925.github.io/
 use_directory_urls: true
 
-repo_url: https://github.com/pomelo925/pomelo925.github.io.git
+repo_url: https://github.com/pomelo925/pomelo925.github.io
 repo_name: pomelo925/pomelo925.github.io
+edit_uri: blob/mkdocs/docs/
 
 theme:
   name: material
@@ -77,9 +78,7 @@ nav:
     - I. Software: 
       - tutorials/I.Software/index.md
       - 1. Linux:
-        - tutorials/I.Software/1.Linux/1-1.installation.md
-        - tutorials/I.Software/1.Linux/1-2.commands.md
-        - tutorials/I.Software/1.Linux/1-3.tools.md
+        - tutorials/I.Software/1.Linux/1-1.os.md
       - 2. Net:
         - tutorials/I.Software/2.Net/2-1.dhcp.md
         - tutorials/I.Software/2.Net/2-2.mDNS.md
@@ -137,4 +136,8 @@ plugins:
   - include-markdown
 
 extra_css:
-  - stylesheets/extra.css
+  - stylesheets/typography.css
+  - stylesheets/status.css
+  - stylesheets/skills.css
+  - stylesheets/experience.css
+  - stylesheets/background.css
