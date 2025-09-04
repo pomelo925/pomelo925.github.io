@@ -1,0 +1,141 @@
+/* Experience section styles - Timeline layout */
+
+.experience-container {
+  margin: 2rem 0;
+  position: relative;
+  padding-left: 2rem;
+}
+
+/* Main timeline line */
+.experience-container::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  bottom: 0;
+  width: 3.5px;
+  background: #26a69a;
+}
+
+.experience-item {
+  position: relative;
+  margin-bottom: 3rem;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Horizontal line for each event */
+.experience-item::before {
+  content: '';
+  position: absolute;
+  left: -1rem;
+  top: 0.5rem;
+  width: 2.5rem;
+  height: 3px;
+  background: #26a69a;
+}
+
+/* Timeline date display on the right */
+.timeline-date {
+  position: absolute;
+  right: -8rem;
+  top: -0.3rem;
+  width: 7rem;
+  text-align: left;
+  font-size: 0.75rem;
+  color: #9e9e9e;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.experience-header {
+  margin-bottom: 1rem;
+  margin-left: 3rem;
+}
+
+.experience-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.3rem;
+  margin-left: -0.5rem;
+  margin-top: 0.1rem;
+  line-height: 1.2;
+}
+
+.experience-company {
+  font-size: 0.8rem;
+  color: #26a69a;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+  margin-left: -2rem;
+}
+
+.experience-tech {
+  font-size: 0.7rem;
+  color: #9e9e9e;
+  font-style: italic;
+  margin-bottom: 1rem;
+  margin-left: -2rem;
+}
+
+.experience-description {
+  margin: 0;
+  margin-left: 3rem;
+  font-size: 0.75rem;
+}
+
+.experience-description li {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.highlight-text {
+  color: #26a69a;
+  font-weight: 500;
+}
+
+/* Responsive adjustments for timeline */
+@media (max-width: 1024px) {
+  .timeline-date {
+    right: -6rem;
+    width: 5rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .experience-container {
+    padding-left: 1.5rem;
+    padding-right: 4rem;
+  }
+  
+  .experience-container::before {
+    left: 0.75rem;
+  }
+  
+  .experience-item::before {
+    left: -0.75rem;
+    width: 2rem;
+  }
+  
+  .experience-header {
+    margin-left: 2rem;
+  }
+  
+  .experience-title {
+    margin-left: 0;
+  }
+  
+  .experience-description {
+    margin-left: 2rem;
+  }
+  
+  .timeline-date {
+    right: -3.5rem;
+    width: 3rem;
+    font-size: 0.65rem;
+  }
+}

@@ -1,0 +1,22 @@
+/* Typography styles - inline code and headings */
+
+/* inline code */
+.md-typeset code {
+  background-color: #2e2e2e; 
+  color: #ffca28;            
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+}
+
+/* different blue colors for different heading levels */
+.md-typeset h1 {
+  color: #90caf9 !important;  /* light blue for h1 */
+}
+
+.md-typeset h2 {
+  color: #42a5f5 !important;  /* medium blue for h2 */
+}
+
+.md-typeset h3 {
+  color: #1e88e5 !important;  /* darker blue for h3 */
+}
